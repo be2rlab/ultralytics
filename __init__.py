@@ -2,6 +2,15 @@
 
 __version__ = "8.0.120"
 
+import sys
+from pathlib import Path
+
+# Add parent directory of 'ultralytics' to path to allow absolute imports
+# like 'from ultralytics.yolo.utils import ...'
+ultralytics_parent_dir = str(Path(__file__).parent.parent.resolve())
+if ultralytics_parent_dir not in sys.path:
+    sys.path.insert(0, ultralytics_parent_dir)
+
 from ultralytics.hub import start
 from ultralytics.vit.rtdetr import RTDETR
 from ultralytics.vit.sam import SAM
